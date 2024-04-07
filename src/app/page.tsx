@@ -1,26 +1,6 @@
-function Header() {
-  return (
-    <div>
-      <p>Header</p>
-    </div>
-  )
-}
-
-function Controls() {
-  return (
-    <div>
-      <p>Controls</p>
-    </div>
-  )
-}
-
-function Dashboard() {
-  return (
-    <div>
-      <p>Dashboard</p>
-    </div>
-  )
-}
+import Header from './components/header';
+import Controls from './components/controls';
+import Dashboard from './components/dashboard';
 
 export default function Home() {
   return (
