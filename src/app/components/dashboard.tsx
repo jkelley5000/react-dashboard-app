@@ -1,7 +1,12 @@
+import ReportContainer from "./common/report-container";
+
 export default function Dashboard() {
     return (
         <div>
-            <p>Dashboard</p>
+            <ReportContainer />
+            <ReportContainer />
+            <ReportContainer />
+            <ReportContainer />
         </div>
     )
 }
