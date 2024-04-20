@@ -19,7 +19,7 @@ ChartJS.register(
     CategoryScale
 );
 
-export default function ReportContainer({ taskData }) {
+export default function ReportContainer({ ...taskData }) {
     const options = {
         responsive: true,
         plugins: {
