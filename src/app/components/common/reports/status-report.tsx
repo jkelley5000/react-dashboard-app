@@ -55,7 +55,7 @@ export default function StatusReport({ taskData }) {
             {
                 label: 'Tasks',
                 data: datasetDataCounts,
-                backgroundColor: '#e22ba3',
+                backgroundColor: ['#e22ba3', '#952be2', '#2bb5e2', '#2be245'],
             },
         ],
     };
