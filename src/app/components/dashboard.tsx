@@ -1,15 +1,15 @@
 'use client';
 
-import ReportContainer from "./common/report-container";
 import { GetTasks } from "../api/route";
 import { use } from "react";
+import StatusReport from "./common/reports/status-report";
 
 export default function Dashboard() {
     const taskData = use(GetTasks());
 
     return (
         <div>
-            <ReportContainer taskData={{ taskData }} />
+            <StatusReport taskData={{ taskData }} />
         </div>
     )
 }

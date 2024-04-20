@@ -8,6 +8,7 @@ import {
     LinearScale,
     CategoryScale
 } from "chart.js";
+import { AppProps } from "next/app";
 import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(
@@ -19,7 +20,7 @@ ChartJS.register(
     CategoryScale
 );
 
-export default function ReportContainer({ ...taskData }) {
+export default function StatusReport({ taskData }) {
     const options = {
         responsive: true,
         plugins: {
@@ -60,7 +61,7 @@ export default function ReportContainer({ ...taskData }) {
     };
 
     return (
-        <main className="report-container p-3 border-2 border-gray-300 rounded-md">
+        <main className="report-container w-1/2 mt-10 ml-5 p-3 border-2 border-gray-300 rounded-md">
             <Bar options={options} data={data} />
         </main>
     )
