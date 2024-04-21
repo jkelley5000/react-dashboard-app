@@ -29,7 +29,7 @@ export default function StatusReport({ taskData }) {
             },
             title: {
                 display: true,
-                text: 'Tasks by Status',
+                text: 'Tasks By Status',
             },
         },
     };
@@ -61,7 +61,7 @@ export default function StatusReport({ taskData }) {
     };
 
     return (
-        <main className="report-container w-1/2 mt-10 ml-5 p-3 border-2 border-gray-300 rounded-md">
+        <main className="report-container w-1/3 h-[400px] mt-10 ml-5 p-3 border-2 border-gray-300 rounded-md">
             <Bar options={options} data={data} />
         </main>
     )
