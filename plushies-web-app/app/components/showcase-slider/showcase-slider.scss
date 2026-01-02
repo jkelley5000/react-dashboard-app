@@ -1,0 +1,35 @@
+.showcase-slider {
+    width: 80%;
+    overflow: hidden;
+    position: relative;
+
+    &-track {
+        display: flex;
+        width: max-content;
+        animation: scroll 20s linear infinite;
+
+        &:hover {
+            animation-play-state: paused;
+        }
+
+        &-slide {
+            flex-shrink: 0;
+            padding: 0 10px;
+
+            .plushie-image {
+                width: 150px;
+                display: block;
+            }
+        }
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-33.33%);
+        }
+    }
+}
