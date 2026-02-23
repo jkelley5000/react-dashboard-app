@@ -5,11 +5,237 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+:root,
+[data-theme="light"] {
+  --color-bg: #f4f7fb;
+  --color-surface: #ffffff;
+  --color-surface-muted: #eef3f9;
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-border: #d7e1ee;
+  --color-primary: #0f766e;
+  --shadow-sm: 0 1px 2px 0 rgb(15 23 42 / 0.07);
+  --shadow-md: 0 8px 20px -12px rgb(15 23 42 / 0.22);
+  --space-section: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+[data-theme="warm"] {
+  --color-bg: #fffaf5;
+  --color-surface: #fffdf8;
+  --color-surface-muted: #fff0df;
+  --color-text: #3f2e18;
+  --color-text-muted: #76563f;
+  --color-border: #f1dbc2;
+  --color-primary: #b45309;
+}
+
+[data-theme="ocean"] {
+  --color-bg: #f0f9ff;
+  --color-surface: #f8fcff;
+  --color-surface-muted: #e0f2fe;
+  --color-text: #0c4a6e;
+  --color-text-muted: #0e7490;
+  --color-border: #bfdbfe;
+  --color-primary: #0369a1;
+}
+
+[data-theme="forest"] {
+  --color-bg: #f5fbf6;
+  --color-surface: #fdfffc;
+  --color-surface-muted: #e8f5e9;
+  --color-text: #1b4332;
+  --color-text-muted: #2d6a4f;
+  --color-border: #cde6d1;
+  --color-primary: #2a9d8f;
+}
+
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  min-height: 100%;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+@layer utilities {
+  .theme-page {
+    background: radial-gradient(circle at top, color-mix(in srgb, var(--color-surface-muted) 45%, transparent), transparent 52%),
+      var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .theme-text-primary {
+    color: var(--color-text);
+  }
+
+  .theme-text-muted {
+    color: var(--color-text-muted);
+  }
+
+  .theme-border {
+    border-color: var(--color-border);
+  }
+
+  .theme-surface {
+    background-color: var(--color-surface);
+  }
+
+  .theme-surface-muted {
+    background-color: var(--color-surface-muted);
+  }
+
+  .theme-shadow-sm {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .theme-shadow-md {
+    box-shadow: var(--shadow-md);
+  }
+
+  .theme-container {
+    width: min(72rem, 100% - 2rem);
+    margin-inline: auto;
+  }
+
+  .theme-section {
+    padding-block: var(--space-section);
+  }
+}
+
+@layer components {
+  .theme-card {
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .theme-card-padded {
+    padding: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .theme-link {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .theme-link:hover {
+    opacity: 0.82;
+  }
+
+  .theme-button {
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface-muted);
+    color: var(--color-text);
+    box-shadow: var(--shadow-sm);
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+  }
+
+  .theme-button-active {
+    background-color: var(--color-surface);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .theme-switcher-shell {
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    z-index: 50;
+    width: min(24rem, calc(100vw - 2rem));
+  }
+
+  .theme-switcher-toggle {
+    margin-left: auto;
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
+
+  .theme-switcher {
+    margin-top: 0.5rem;
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
+  }
+
+  .theme-switcher-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .theme-switcher-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+  }
+
+  .theme-switcher-mobile {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+  }
+
+  .theme-switcher-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    background: var(--color-surface-muted);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .theme-switcher-icon svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .theme-switcher-select-wrap {
+    flex: 1;
+  }
+
+  .theme-switcher-select {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+    color: var(--color-text);
+    padding: 0.55rem 0.75rem;
+    box-shadow: var(--shadow-sm);
+    text-transform: capitalize;
+  }
+
+  @media (max-width: 640px) {
+    .theme-switcher-grid {
+      display: none;
+    }
+
+    .theme-switcher-mobile {
+      display: flex;
+    }
+
+    .theme-switcher-shell {
+      width: min(14rem, calc(100vw - 2rem));
+    }
   }
 }

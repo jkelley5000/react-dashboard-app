@@ -9,6 +9,21 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import ThemeSwitcher from "./components/theme-switcher/theme-switcher";
+
+const themeBootstrapScript = `
+  (function () {
+    try {
+      var key = "plushies-theme";
+      var value = window.localStorage.getItem(key);
+      var allowed = ["light", "warm", "ocean", "forest"];
+      var theme = allowed.indexOf(value) >= 0 ? value : "light";
+      document.body.setAttribute("data-theme", theme);
+    } catch (error) {
+      document.body.setAttribute("data-theme", "light");
+    }
+  })();
+`;
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -32,7 +47,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body suppressHydrationWarning data-theme="light" className="theme-page theme-text-primary">
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -42,7 +58,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <ThemeSwitcher />
+      <Outlet />
+    </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

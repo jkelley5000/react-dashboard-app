@@ -23,15 +23,15 @@ export default function ShowcaseSlider() {
   const sliderItems = [...Plushies, ...Plushies, ...Plushies];
 
   return (
-    <main className="showcase-slider flex flex-col items-center justify-center pt-16 pb-4">
+    <main className="showcase-slider theme-container theme-section flex flex-col items-center justify-center">
       <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
         <header className="flex flex-col items-center gap-9">
           <div className="w-[500px] max-w-[100vw] p-4">
-            <h3 className="text-center">{title}</h3>
+            <h3 className="text-center theme-text-primary text-2xl font-semibold">{title}</h3>
           </div>
         </header>
       </div>
-      <div className="showcase-slider-track flex flex-row overflow-x-auto px-4 py-8">
+      <div className="showcase-slider-track theme-card theme-card-padded theme-shadow-sm flex flex-row overflow-x-auto px-4 py-8 rounded-2xl">
         {/* First set of items */}
         {sliderItems.map((plushie, index) => (
           <div key={`set1-${index}`} className="showcase-slider-track-slide">

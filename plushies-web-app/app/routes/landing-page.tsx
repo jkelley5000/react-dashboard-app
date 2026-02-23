@@ -11,7 +11,7 @@ export function meta({ }: Route.MetaArgs) {
 
 export default function LandingPage() {
   return (
-    <main className="flex flex-col items-center justify-center pt-16 pb-4">
+    <main className="theme-page flex flex-col items-center justify-center">
       <Welcome />
       <ShowcaseSlider />
     </main>
