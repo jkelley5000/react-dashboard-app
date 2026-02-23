@@ -9,6 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import Header from "./components/header/header";
 import ThemeSwitcher from "./components/theme-switcher/theme-switcher";
 
 const themeBootstrapScript = `
@@ -60,6 +61,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <>
+      <Header />
       <ThemeSwitcher />
       <Outlet />
     </>
